@@ -10,37 +10,27 @@
 <body class="bg-black">
 
 
-
 	<div class="text-white bg-black h-screen text-center flex flex-col p-6 space-y-6 overflow-hidden">
 
 		<div class="my-auto">
-			<p class="text-7xl"> Welcome Home </p>
-			<p class="text-2xl"> Coming Soon </p>
+			<p class="text-7xl"> Select Service </p>
 		</div>
 		
-		<div class="max-w-5xl h-full w-full mx-auto hidden">
-
-			<div class="grid grid-cols-3 gap-6 h-full">
-
-				<div onclick="location.href = 'https://google.com' " class="border border-black rounded hover:scale-105 transition ease-in-out bg-blue-400 cursor-pointer"></div>
-
-				<div onclick="location.href = 'https://google.com' " class="border border-black rounded  hover:scale-105 transition ease-in-out bg-green-400"></div>
-
-				<div onclick="location.href = 'https://google.com' " class="border border-black rounded  hover:scale-105 transition ease-in-out bg-red-400 cursor-pointer">
-
-				</div>
-
-				<div onclick="location.href = 'https://google.com' " class="border border-black rounded  hover:scale-105 transition ease-in-out bg-orange-400 cursor-pointer"></div>
-
-				<div onclick="location.href = 'https://google.com' " class="border border-black rounded  hover:scale-105 transition ease-in-out bg-pink-400 cursor-pointer"></div>
-
-				<div onclick="location.href = 'https://google.com' " class="border border-black rounded  hover:scale-105 transition ease-in-out bg-yellow-400 cursor-pointer">
-
-				</div>
-
-			</div>
-		</div>
+		<div id="list" class="max-w-5xl h-full w-full mx-auto flex flex-col space-y-6 text-xl"></div>
 
 	</div>
 </body>
 </html>
+
+<script type="text/javascript">
+	
+	let services = <%- JSON.stringify(services) %>
+
+	for ( let service of services ){
+		let a = document.createElement('a');
+		a.setAttribute('href',service.url);
+		a.innerHTML = service.name;
+		document.getElementById('list').appendChild(a);
+	}
+
+</script>
